@@ -1,0 +1,331 @@
+From 74674db6ec667723aa58843ca3dabf7ea4f37cee Mon Sep 17 00:00:00 2001
+From: Minerals2016 <Minerals2016@users.noreply.github.com>
+Date: Tue, 9 Jan 2024 16:17:18 -0500
+Subject: [PATCH] Task 1
+
+Updated client.py with
+
+getDataPoint function
+getRatio function
+main function
+---
+ .idea/.gitignore                              |   3 +
+ .idea/forage-jpmc-swe-task-1.iml              |  14 ++
+ .idea/inspectionProfiles/Project_Default.xml  | 123 ++++++++++++++++++
+ .../inspectionProfiles/profiles_settings.xml  |   6 +
+ .idea/misc.xml                                |   4 +
+ .idea/modules.xml                             |   8 ++
+ .idea/vcs.xml                                 |   6 +
+ __pycache__/client3.cpython-310.pyc           | Bin 0 -> 1063 bytes
+ __pycache__/client_test.cpython-310.pyc       | Bin 0 -> 1122 bytes
+ client3.py                                    |  12 +-
+ 10 files changed, 172 insertions(+), 4 deletions(-)
+ create mode 100644 .idea/.gitignore
+ create mode 100644 .idea/forage-jpmc-swe-task-1.iml
+ create mode 100644 .idea/inspectionProfiles/Project_Default.xml
+ create mode 100644 .idea/inspectionProfiles/profiles_settings.xml
+ create mode 100644 .idea/misc.xml
+ create mode 100644 .idea/modules.xml
+ create mode 100644 .idea/vcs.xml
+ create mode 100644 __pycache__/client3.cpython-310.pyc
+ create mode 100644 __pycache__/client_test.cpython-310.pyc
+
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+index 0000000..26d3352
+--- /dev/null
++++ b/.idea/.gitignore
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+diff --git a/.idea/forage-jpmc-swe-task-1.iml b/.idea/forage-jpmc-swe-task-1.iml
+new file mode 100644
+index 0000000..8e5446a
+--- /dev/null
++++ b/.idea/forage-jpmc-swe-task-1.iml
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++  <component name="PyDocumentationSettings">
++    <option name="format" value="PLAIN" />
++    <option name="myDocStringFormat" value="Plain" />
++  </component>
++</module>
+\ No newline at end of file
+diff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml
+new file mode 100644
+index 0000000..8b0941a
+--- /dev/null
++++ b/.idea/inspectionProfiles/Project_Default.xml
+@@ -0,0 +1,123 @@
++<component name="InspectionProjectProfileManager">
++  <profile version="1.0">
++    <option name="myName" value="Project Default" />
++    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
++      <option name="ignoredPackages">
++        <value>
++          <list size="103">
++            <item index="0" class="java.lang.String" itemvalue="absl-py" />
++            <item index="1" class="java.lang.String" itemvalue="protobuf" />
++            <item index="2" class="java.lang.String" itemvalue="tzlocal" />
++            <item index="3" class="java.lang.String" itemvalue="html5lib" />
++            <item index="4" class="java.lang.String" itemvalue="joblib" />
++            <item index="5" class="java.lang.String" itemvalue="threadpoolctl" />
++            <item index="6" class="java.lang.String" itemvalue="scikit-learn" />
++            <item index="7" class="java.lang.String" itemvalue="multitasking" />
++            <item index="8" class="java.lang.String" itemvalue="validators" />
++            <item index="9" class="java.lang.String" itemvalue="python-dateutil" />
++            <item index="10" class="java.lang.String" itemvalue="cycler" />
++            <item index="11" class="java.lang.String" itemvalue="gast" />
++            <item index="12" class="java.lang.String" itemvalue="MarkupSafe" />
++            <item index="13" class="java.lang.String" itemvalue="pycparser" />
++            <item index="14" class="java.lang.String" itemvalue="gitdb" />
++            <item index="15" class="java.lang.String" itemvalue="appdirs" />
++            <item index="16" class="java.lang.String" itemvalue="Pygments" />
++            <item index="17" class="java.lang.String" itemvalue="bleach" />
++            <item index="18" class="java.lang.String" itemvalue="certifi" />
++            <item index="19" class="java.lang.String" itemvalue="semver" />
++            <item index="20" class="java.lang.String" itemvalue="keras" />
++            <item index="21" class="java.lang.String" itemvalue="lxml" />
++            <item index="22" class="java.lang.String" itemvalue="soupsieve" />
++            <item index="23" class="java.lang.String" itemvalue="entrypoints" />
++            <item index="24" class="java.lang.String" itemvalue="pyparsing" />
++            <item index="25" class="java.lang.String" itemvalue="commonmark" />
++            <item index="26" class="java.lang.String" itemvalue="Markdown" />
++            <item index="27" class="java.lang.String" itemvalue="jsonschema" />
++            <item index="28" class="java.lang.String" itemvalue="beautifulsoup4" />
++            <item index="29" class="java.lang.String" itemvalue="GitPython" />
++            <item index="30" class="java.lang.String" itemvalue="Werkzeug" />
++            <item index="31" class="java.lang.String" itemvalue="streamlit" />
++            <item index="32" class="java.lang.String" itemvalue="cryptography" />
++            <item index="33" class="java.lang.String" itemvalue="kiwisolver" />
++            <item index="34" class="java.lang.String" itemvalue="Pympler" />
++            <item index="35" class="java.lang.String" itemvalue="click" />
++            <item index="36" class="java.lang.String" itemvalue="altair" />
++            <item index="37" class="java.lang.String" itemvalue="attrs" />
++            <item index="38" class="java.lang.String" itemvalue="contourpy" />
++            <item index="39" class="java.lang.String" itemvalue="fonttools" />
++            <item index="40" class="java.lang.String" itemvalue="tensorboard" />
++            <item index="41" class="java.lang.String" itemvalue="matplotlib" />
++            <item index="42" class="java.lang.String" itemvalue="charset-normalizer" />
++            <item index="43" class="java.lang.String" itemvalue="idna" />
++            <item index="44" class="java.lang.String" itemvalue="decorator" />
++            <item index="45" class="java.lang.String" itemvalue="pydeck" />
++            <item index="46" class="java.lang.String" itemvalue="smmap" />
++            <item index="47" class="java.lang.String" itemvalue="cffi" />
++            <item index="48" class="java.lang.String" itemvalue="numpy" />
++            <item index="49" class="java.lang.String" itemvalue="requests" />
++            <item index="50" class="java.lang.String" itemvalue="importlib-metadata" />
++            <item index="51" class="java.lang.String" itemvalue="Jinja2" />
++            <item index="52" class="java.lang.String" itemvalue="pyrsistent" />
++            <item index="53" class="java.lang.String" itemvalue="tensorflow" />
++            <item index="54" class="java.lang.String" itemvalue="seaborn" />
++            <item index="55" class="java.lang.String" itemvalue="yfinance" />
++            <item index="56" class="java.lang.String" itemvalue="zipp" />
++            <item index="57" class="java.lang.String" itemvalue="tenacity" />
++            <item index="58" class="java.lang.String" itemvalue="urllib3" />
++            <item index="59" class="java.lang.String" itemvalue="blinker" />
++            <item index="60" class="java.lang.String" itemvalue="pyarrow" />
++            <item index="61" class="java.lang.String" itemvalue="scipy" />
++            <item index="62" class="java.lang.String" itemvalue="six" />
++            <item index="63" class="java.lang.String" itemvalue="tornado" />
++            <item index="64" class="java.lang.String" itemvalue="tzdata" />
++            <item index="65" class="java.lang.String" itemvalue="astor" />
++            <item index="66" class="java.lang.String" itemvalue="rich" />
++            <item index="67" class="java.lang.String" itemvalue="packaging" />
++            <item index="68" class="java.lang.String" itemvalue="plotly" />
++            <item index="69" class="java.lang.String" itemvalue="toml" />
++            <item index="70" class="java.lang.String" itemvalue="pytz-deprecation-shim" />
++            <item index="71" class="java.lang.String" itemvalue="pandas" />
++            <item index="72" class="java.lang.String" itemvalue="termcolor" />
++            <item index="73" class="java.lang.String" itemvalue="watchdog" />
++            <item index="74" class="java.lang.String" itemvalue="toolz" />
++            <item index="75" class="java.lang.String" itemvalue="colorama" />
++            <item index="76" class="java.lang.String" itemvalue="typing_extensions" />
++            <item index="77" class="java.lang.String" itemvalue="cachetools" />
++            <item index="78" class="java.lang.String" itemvalue="grpcio" />
++            <item index="79" class="java.lang.String" itemvalue="frozendict" />
++            <item index="80" class="java.lang.String" itemvalue="pytz" />
++            <item index="81" class="java.lang.String" itemvalue="webencodings" />
++            <item index="82" class="java.lang.String" itemvalue="Pillow" />
++            <item index="83" class="java.lang.String" itemvalue="google-pasta" />
++            <item index="84" class="java.lang.String" itemvalue="libclang" />
++            <item index="85" class="java.lang.String" itemvalue="rsa" />
++            <item index="86" class="java.lang.String" itemvalue="tensorflow-estimator" />
++            <item index="87" class="java.lang.String" itemvalue="google-auth-oauthlib" />
++            <item index="88" class="java.lang.String" itemvalue="opt-einsum" />
++            <item index="89" class="java.lang.String" itemvalue="h5py" />
++            <item index="90" class="java.lang.String" itemvalue="sklearn" />
++            <item index="91" class="java.lang.String" itemvalue="tensorboard-data-server" />
++            <item index="92" class="java.lang.String" itemvalue="wrapt" />
++            <item index="93" class="java.lang.String" itemvalue="pyasn1" />
++            <item index="94" class="java.lang.String" itemvalue="tensorflow-io-gcs-filesystem" />
++            <item index="95" class="java.lang.String" itemvalue="tensorflow-intel" />
++            <item index="96" class="java.lang.String" itemvalue="pyasn1-modules" />
++            <item index="97" class="java.lang.String" itemvalue="requests-oauthlib" />
++            <item index="98" class="java.lang.String" itemvalue="flatbuffers" />
++            <item index="99" class="java.lang.String" itemvalue="tensorboard-plugin-wit" />
++            <item index="100" class="java.lang.String" itemvalue="oauthlib" />
++            <item index="101" class="java.lang.String" itemvalue="astunparse" />
++            <item index="102" class="java.lang.String" itemvalue="google-auth" />
++          </list>
++        </value>
++      </option>
++    </inspection_tool>
++    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
++      <option name="ignoredIdentifiers">
++        <list>
++          <option value="str.Client" />
++        </list>
++      </option>
++    </inspection_tool>
++  </profile>
++</component>
+\ No newline at end of file
+diff --git a/.idea/inspectionProfiles/profiles_settings.xml b/.idea/inspectionProfiles/profiles_settings.xml
+new file mode 100644
+index 0000000..105ce2d
+--- /dev/null
++++ b/.idea/inspectionProfiles/profiles_settings.xml
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <settings>
++    <option name="USE_PROJECT_PROFILE" value="false" />
++    <version value="1.0" />
++  </settings>
++</component>
+\ No newline at end of file
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+index 0000000..90ba53d
+--- /dev/null
++++ b/.idea/misc.xml
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (forage-jpmc-swe-task-1)" project-jdk-type="Python SDK" />
++</project>
+\ No newline at end of file
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+index 0000000..973696f
+--- /dev/null
++++ b/.idea/modules.xml
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/forage-jpmc-swe-task-1.iml" filepath="$PROJECT_DIR$/.idea/forage-jpmc-swe-task-1.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+index 0000000..35eb1dd
+--- /dev/null
++++ b/.idea/vcs.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/__pycache__/client3.cpython-310.pyc b/__pycache__/client3.cpython-310.pyc
+new file mode 100644
+index 0000000000000000000000000000000000000000..a24790bfa68a116102d35f1cb0f4f1adbe2599f0
+GIT binary patch
+literal 1063
+zcmYjQ&u`l{6ecOklJje6>w3$L3s7txmZrl{v@q8FKr?jMq392^zz7e5EIubnB+()1
+z4so56_eboogLB+{e~qp?^|r&X!%lmYlAtvB_&w_L)5rHwdUJD);Q0Hu-{GK3$X`Br
+zf8ZYZ7N`9agCdF+M7ArHw8@za6q8&9GE`iJzY^I|9TnjkL9F5vW?n-V)*xKcB|RWN
+z-<Rt^RvQo;Z?3k0uRZ{}q8H?XUeMLHU*(N1fg8x|$(zuDn@c+4@|Nt$+p-TIsxI7u
+z9^8ihg!jpkQgZqLch?|-KJ=IDa&K4Bm#Fq78LYoU<>cx7<0I#$!~Ok2XK8Vyts6eP
+z_we5S=?u)-H@SNB_B{WG5|ZJ(9w8!*^D$04#Ly)Rthz(asq={K5Ebm8igVWF{5lU7
+z?3^#?f-QmtpK#O>&L4<pMypu{A}tExjzClZ3Y2)07BjHIX>kY@nA9OdsMMuXomWoO
+zp>;YtsUxSS$v9VaI5l|&ZJyeb0j<MHp;I>q>+p1@9T<jM>n?JWmfA&H3ynX|AH;au
+z|NHLoaP-Q8v7;aJvOF6d=xkO(<?QH5?tYk!M-y$*L)bf>mf4>D1@;`)+52LY6*;oL
+zygNOsHx9uapwwrLR4i&YFfbO=ZTxY%L5<(YyrQe&v2SzJ)((PhYZaUCiYMR%b|BY6
+zPeda=Nkv+zOFS0u{68D{116(O#uXSh58AMfygEjCFMPSrFth&bjB#qVnrBH;rg@bl
+z^G}}pt|@WHiqwfuv2VjW_H%)UZPw-`hz9exsfE13N0J{~UCE9?ak`XSGgB1#_^tuG
+zQP#;$o6GR|tM6a@RMV$T8?Ikmr6nXu&2u!X4zb1|)HJC>v{6|ZT~&#&ik?DMchHG4
+zbu~ATs=Cv-Y)yp6XuLMDNB(1N{B3SX<=$(Cx7)NG`KrWASisl5k9HSB+>2>UdBB4>
+Th}Yt1n+e()*rz?l|K;p|@8%43
+
+literal 0
+HcmV?d00001
+
+diff --git a/__pycache__/client_test.cpython-310.pyc b/__pycache__/client_test.cpython-310.pyc
+new file mode 100644
+index 0000000000000000000000000000000000000000..0cf503364a59b38c2ae9d877c8be076534442b28
+GIT binary patch
+literal 1122
+zcmb7DOHUI~6u$Fnhti@V8m%uDZW`03Esv&zkU~L-F$4l`CdJ7x_fm(>bjqDOAvAF%
+z{0A2-bSE3v{s{a7vokIT(S->+7V0@u1dK7plbmnPxo6J%UO$sb5uk6c_t`s@kk6=G
+zCO9KC;9v@X5-PdGz_08|o@~exnI}}C>Mo%wBb&-A#ZZ|>wU*59G4dwymPp{U5_2wb
+z3^B-JPKwe^CT1;RE%{Dc*m!!GWKe3r!Ce4G42cp$rV^ERiJ|ne87kFQNG=hj>aN4u
+zVwDBLmf-hagfWu9b>Ndp0Q9HIzD&WBCSoZ`b=tSD(G=}Jv!rR}%rbzMru-6eL!K*(
+z&5wsbPoLM0A40GL+0Z)Nv00=BPM4i#%f(VPUo7WKrQvdUqBuS=QY?&B%A;c=M-TSC
+zEPuEUjvhFk4ipQeVzpWs9j{g@l~SZk&(sezBPsljX$7sQPdFa*VtJk3*}6j`*`bCO
+z2;XiUeT7haEeM8tIa>JC9eTgLRy$q>EmCIZ9v?tyP!n@EjKo&x3l{JjV2j~&u0GLt
+z7BC((o;aSj)0p+`(1YOxjd@2bgzJqBpIc3q-|TpHKG<e?0Tty-4LcsO3Bg36vl9)Y
+zU|!y!X<M!xx|U!|I1~*sp6CEsIV-8(Rki!*VoQa8dH;2d9D6=r#o=0wV<MhFz-+t^
+z0k1RfM@S=N5UwIzLl{K3jxdA}&*tX26sxyDjY|Kja>k+aoI%HY^@Y`*4q9=xEckXO
+z|D)MI!Yt;rNH@*4<uTKYQl{zoG;~o;o90$%xjhTNjYZ%2z4G(&xdH~9R)BNSi7x3$
+zRgX_GxMw+S)669!J#0GyJ2jHM9glE)H<7*yXLSp%3I^i%3?mi2E-q6~if5%y_G+BM
+T_ZQ$Cbdr_^Wql|usXu-K;-n$z
+
+literal 0
+HcmV?d00001
+
+diff --git a/client3.py b/client3.py
+index 3fc09b7..b59a48a 100644
+--- a/client3.py
++++ b/client3.py
+@@ -35,15 +35,17 @@ def getDataPoint(quote):
+     stock = quote['stock']
+     bid_price = float(quote['top_bid']['price'])
+     ask_price = float(quote['top_ask']['price'])
+-    price = bid_price
++    price = (bid_price + ask_price) / 2
+     return stock, bid_price, ask_price, price
+ 
+ 
+ def getRatio(price_a, price_b):
+     """ Get ratio of price_a and price_b """
+     """ ------------- Update this function ------------- """
+-    return 1
+-
++    if (price_b != 0): # avoids division by 0
++        return price_a / price_b
++    else:
++        return "price_b is invalid"
+ 
+ # Main
+ if __name__ == "__main__":
+@@ -52,8 +54,10 @@ if __name__ == "__main__":
+         quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
+ 
+         """ ----------- Update to get the ratio --------------- """
++        prices = {}
+         for quote in quotes:
+             stock, bid_price, ask_price, price = getDataPoint(quote)
++            prices[stock] = price
+             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+ 
+-        print("Ratio %s" % getRatio(price, price))
++        print("Ratio %s" % getRatio(prices["ABC"], prices["DEF"]))
+-- 
+2.33.0.windows.2
+
